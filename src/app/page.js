@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-// Services data with pricing
+// Services data without direct prices
 const services = [
   {
     id: "ai-ml",
     title: "Artificial Intelligence & Machine Learning",
     description: "Custom models, GenAI integration (GPT, Llama, Gemini), predictive systems.",
-    price: "₹30,000 – ₹2,50,000+",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -19,7 +18,6 @@ const services = [
     id: "ai-architecture",
     title: "AI Architecture & RAG Systems",
     description: "Vector DBs, LangChain, LLM integration, prompt engineering.",
-    price: "₹25,000 – ₹90,000+",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -30,7 +28,6 @@ const services = [
     id: "chatbots",
     title: "AI Chatbot Solutions",
     description: "RAG bots, WhatsApp/Telegram bots, multi-agent orchestration.",
-    price: "₹40,000 – ₹3,00,000+",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -41,7 +38,6 @@ const services = [
     id: "backend",
     title: "Backend Development & APIs",
     description: "REST, GraphQL, JWT auth, scalable microservices.",
-    price: "₹35,000 – ₹1,50,000",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
@@ -52,7 +48,6 @@ const services = [
     id: "frontend",
     title: "Frontend Development",
     description: "React, Next.js, responsive UI, data dashboards.",
-    price: "₹8,000 – ₹80,000",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
@@ -63,7 +58,6 @@ const services = [
     id: "database",
     title: "Database Services",
     description: "MySQL, PostgreSQL, MongoDB, Vector DB setup.",
-    price: "₹8,000 – ₹70,000",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
@@ -74,7 +68,6 @@ const services = [
     id: "cloud",
     title: "Cloud & Infrastructure",
     description: "AWS, Azure, GCP, serverless deployment.",
-    price: "₹40,000 – ₹1,50,000",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -85,7 +78,6 @@ const services = [
     id: "devops",
     title: "DevOps & Deployment",
     description: "Docker, CI/CD, GitHub Actions, Nginx.",
-    price: "₹8,000 – ₹90,000",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -97,12 +89,69 @@ const services = [
     id: "automation",
     title: "Automation Services",
     description: "API automation, AI workflows, business process automation.",
-    price: "₹10,000 – ₹1,00,000",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
       </svg>
     ),
+  },
+];
+
+// Projects data with demos
+const projects = [
+  {
+    id: "ai-chatbot",
+    title: "AI Customer Support Bot",
+    description: "Intelligent chatbot with RAG architecture for accurate customer responses, integrated with WhatsApp and web.",
+    technologies: ["Next.js", "Python", "LangChain", "Vector DB", "WhatsApp API"],
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop",
+    demoUrl: "#",
+    caseStudy: "Reduced customer support response time by 80%",
+  },
+  {
+    id: "ecommerce-platform",
+    title: "Full-Stack E-Commerce Platform",
+    description: "Modern e-commerce solution with real-time inventory, payment gateway integration, and admin dashboard.",
+    technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    demoUrl: "#",
+    caseStudy: "Achieved 150% increase in online sales",
+  },
+  {
+    id: "analytics-dashboard",
+    title: "Real-Time Analytics Dashboard",
+    description: "Interactive data visualization dashboard with live metrics, custom charts, and automated reporting.",
+    technologies: ["Next.js", "D3.js", "MongoDB", "Socket.io", "Tailwind"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    demoUrl: "#",
+    caseStudy: "Enabled data-driven decisions with 99.9% uptime",
+  },
+  {
+    id: "ml-prediction",
+    title: "Predictive Maintenance System",
+    description: "ML-powered system for predicting equipment failures before they happen, saving maintenance costs.",
+    technologies: ["Python", "TensorFlow", "FastAPI", "Redis", "GCP"],
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
+    demoUrl: "#",
+    caseStudy: "Prevented $2M in potential downtime losses",
+  },
+  {
+    id: "cloud-infrastructure",
+    title: "Cloud Infrastructure Setup",
+    description: "Scalable cloud architecture with auto-scaling, CDN, and disaster recovery on AWS/Azure.",
+    technologies: ["AWS", "Terraform", "Docker", "Kubernetes", "CI/CD"],
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    demoUrl: "#",
+    caseStudy: "Reduced infrastructure costs by 40%",
+  },
+  {
+    id: "automation-workflow",
+    title: "Business Process Automation",
+    description: "Custom automation workflows to streamline operations, reduce manual tasks, and improve efficiency.",
+    technologies: ["Python", "n8n", "Webhooks", "Slack", "Google Sheets"],
+    image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&h=400&fit=crop",
+    demoUrl: "#",
+    caseStudy: "Saved 30+ hours per week in manual work",
   },
 ];
 
@@ -138,7 +187,7 @@ const processSteps = [
 
 const testimonials = [
   {
-    quote: "ServiceHub transformed our business with their AI solutions. The team's expertise in machine learning and full-stack development exceeded our expectations.",
+    quote: "SS ServiceHub transformed our business with their AI solutions. The team's expertise in machine learning and full-stack development exceeded our expectations.",
     author: "Raj Sharma",
     position: "CEO, TechVentures",
   },
@@ -166,7 +215,7 @@ export default function Home() {
       setScrolled(window.scrollY > 50);
       
       // Update active section
-      const sections = ["home", "services", "process", "testimonials", "contact"];
+      const sections = ["home", "services", "projects", "process", "testimonials", "contact"];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -213,11 +262,11 @@ export default function Home() {
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#0066FF] to-[#8B5CF6] flex items-center justify-center glow-purple">
               <span className="text-xl font-bold text-white">S</span>
             </div>
-            <span className="text-xl font-bold gradient-text">ServiceHub</span>
+            <span className="text-xl font-bold gradient-text">SS ServiceHub</span>
           </button>
 
           <div className="hidden md:flex items-center gap-8">
-            {["services", "process", "testimonials", "contact"].map((item) => (
+            {["services", "projects", "process", "testimonials", "contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -323,35 +372,96 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                 <p className="text-gray-400 text-sm mb-4">{service.description}</p>
-                <div className="price-tag rounded-lg px-4 py-2 inline-block">
-                  <span className="text-[#00F0FF] font-semibold">{service.price}</span>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="btn-outline px-4 py-2 rounded-lg text-sm font-medium"
+                >
+                  Get Quote
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="section-padding relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-[#00F0FF] text-sm font-semibold uppercase tracking-wider">Our Work</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
+              Featured Projects
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Explore our portfolio of successful projects delivered for clients across various industries.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={project.id}
+                className={`project-card glass rounded-2xl overflow-hidden group opacity-0 ${mounted ? "animate-fadeInUp" : ""}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent" />
+                  {/* Demo Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+                    <button className="btn-gradient px-6 py-3 rounded-full font-semibold flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      View Demo
+                    </button>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#00F0FF] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+                  
+                  {/* Case Study Result */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <svg className="w-4 h-4 text-[#8B5CF6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    <span className="text-sm text-[#00F0FF] font-medium">{project.caseStudy}</span>
+                  </div>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs px-3 py-1 rounded-full bg-[#0066FF]/10 border border-[#0066FF]/20 text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-gray-500 text-sm mt-8">
-            Prices are firm within listed ranges (OBO). Final pricing depends on project complexity and feature scope.
-          </p>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="section-padding relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`text-center p-6 rounded-2xl glass opacity-0 ${mounted ? "animate-fadeInUp" : ""}`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
-              </div>
-            ))}
+          <div className="text-center mt-12">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="btn-outline px-8 py-3 rounded-full text-lg font-medium"
+            >
+              View All Projects
+            </button>
           </div>
         </div>
       </section>
@@ -390,6 +500,26 @@ export default function Home() {
                     </svg>
                   </div>
                 )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="section-padding relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`text-center p-6 rounded-2xl glass opacity-0 ${mounted ? "animate-fadeInUp" : ""}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -562,7 +692,7 @@ export default function Home() {
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#0066FF] to-[#8B5CF6] flex items-center justify-center">
                   <span className="text-xl font-bold text-white">S</span>
                 </div>
-                <span className="text-xl font-bold gradient-text">ServiceHub</span>
+                <span className="text-xl font-bold gradient-text">SS ServiceHub</span>
               </button>
               <p className="text-gray-400 text-sm">
                 Transforming businesses with cutting-edge AI and full-stack development solutions.
@@ -610,7 +740,7 @@ export default function Home() {
 
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
-              © 2024 ServiceHub. All rights reserved.
+              © 2026 SS ServiceHub. All rights reserved.
             </p>
             <div className="flex gap-6 text-gray-500 text-sm">
               <a href="#" className="hover:text-[#00F0FF] transition-colors">Privacy Policy</a>

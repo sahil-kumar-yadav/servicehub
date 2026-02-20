@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "ServiceHub | AI & Full-Stack Development Company",
+  title: "SS ServiceHub | AI & Full-Stack Development Company",
   description: "Transform your business with cutting-edge AI solutions, full-stack development, cloud architecture, and automation services. Delivering scalable, production-ready solutions for startups and enterprises.",
   keywords: "AI development, full-stack development, machine learning, cloud infrastructure, backend development, frontend development, automation, React, Next.js, AWS, Azure, GCP",
   authors: [{ name: "ServiceHub" }],
@@ -27,11 +27,11 @@ export const metadata = {
     description: "Transform your business with cutting-edge AI solutions and full-stack development services.",
     type: "website",
     locale: "en_US",
-    siteName: "ServiceHub",
+    siteName: "SS ServiceHub",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ServiceHub | AI & Full-Stack Development Company",
+    title: "SS ServiceHub | AI & Full-Stack Development Company",
     description: "Transform your business with cutting-edge AI solutions and full-stack development services.",
   },
   robots: {
