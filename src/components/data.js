@@ -395,7 +395,7 @@ export const navItems = ["services", "projects", "process", "testimonials", "con
 // Company info
 export const companyInfo = {
   name: "SS ServiceHub",
-  email: "hello@servicehub.tech",
+  email: "connect@servicehub.tech",
   location: "Bangalore, India"
 };
 
